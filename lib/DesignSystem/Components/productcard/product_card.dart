@@ -15,7 +15,7 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5,
+      elevation: 3,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
@@ -24,7 +24,7 @@ class ProductCard extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
-            child: Image.network(
+            child: Image.asset(
               viewModel.imageUrl,
               height: 150,
               width: double.infinity,
@@ -45,7 +45,7 @@ class ProductCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Row(
               children: [
-                const Icon(Icons.star, color: Colors.amber, size: 20),
+                const Icon(Icons.star, color: primary600, size: 20),
                 const SizedBox(width: 4),
                 Text(
                   '${viewModel.rating}',
@@ -69,7 +69,7 @@ class ProductCard extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               'R\$ ${viewModel.price}',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: primary600,

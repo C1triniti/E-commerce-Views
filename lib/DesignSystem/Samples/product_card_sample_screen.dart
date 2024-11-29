@@ -4,18 +4,20 @@ import '../Components/productcard/product_card_view_model.dart';
 
 
 class ProductCardSampleScreen extends StatelessWidget {
+  const ProductCardSampleScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final List<ProductCardViewModel> viewModels = [
       ProductCardViewModel(
-        imageUrl: 'https://via.placeholder.com/150',
+        imageUrl: 'lib/Images/joggers.png',
         productName: 'Twill Suit',
         rating: 4.1,
         reviewCount: 272,
         price: 5233.00,
       ),
       ProductCardViewModel(
-        imageUrl: 'https://via.placeholder.com/150',
+        imageUrl: 'lib/Images/t-shirt.png',
         productName: 'Joggers',
         rating: 4.5,
         reviewCount: 150,
