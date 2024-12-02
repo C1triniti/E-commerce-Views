@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../Shared/colors.dart';
+import 'package:store_app/DesignSystem/Shared/colors.dart';
 import 'search_bar_view_model.dart';
 
 class SearchField extends StatefulWidget {
@@ -21,7 +21,6 @@ class _SearchFieldState extends State<SearchField> {
     super.initState();
     widget.viewModel.searchController.addListener(() {
       setState(() {
-        // This will cause the widget to rebuild whenever the text changes
         widget.viewModel.searchText = widget.viewModel.searchController.text;
       });
     });
@@ -30,25 +29,26 @@ class _SearchFieldState extends State<SearchField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),  // Ajustando o padding
       child: TextField(
         controller: widget.viewModel.searchController,
         onChanged: widget.viewModel.onSearchTextChanged,
         decoration: InputDecoration(
           prefixIcon: IconButton(
-            icon: Icon(Icons.search, color: grey700),
+            icon: const Icon(Icons.search, color: grey700),
             onPressed: widget.viewModel.onSearchPressed,
           ),
           suffixIcon: widget.viewModel.searchText.isNotEmpty
               ? IconButton(
-                  icon: Icon(Icons.clear, color: grey700),
+                  icon: const Icon(Icons.clear, color: grey700),
                   onPressed: () {
                     widget.viewModel.clearSearchText();
-                    setState(() {});  // Atualize o estado para refletir a mudança
+                    setState(() {});  // Atualizando o estado
                   },
                 )
               : null,
           hintText: 'Search items',
+          contentPadding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),  // Ajustando o padding interno
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
           ),

@@ -43,7 +43,7 @@ const TextStyle text2Xl = TextStyle(
   fontFamily: 'Inter',
   fontSize: 24, // 1.5rem
   height: 1.33, // 2rem / 1.5rem
-  color: normalPrimaryBrandColor,
+  color: grey950,
 );
 
 const TextStyle text3Xl = TextStyle(

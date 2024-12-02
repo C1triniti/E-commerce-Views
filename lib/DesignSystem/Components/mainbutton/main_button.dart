@@ -28,7 +28,7 @@ class CustomButton extends StatelessWidget {
       textStyle = button2Semibold;
       paddingVertical = 8.0;
       paddingHorizontal = 16.0;
-      iconSize = 16.0;
+      iconSize = 24.0;
     }
 
     return ElevatedButton(
