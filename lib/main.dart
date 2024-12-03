@@ -3,6 +3,7 @@ import 'package:store_app/DesignSystem/Samples/main_button_sample_screen.dart';
 import 'package:store_app/DesignSystem/Samples/nav_bar_sample_screen.dart';
 import 'package:store_app/DesignSystem/Samples/product_card_sample_screen.dart';
 import 'package:store_app/DesignSystem/Samples/search_bar_sample_screen.dart';
+import 'package:store_app/Scenes/bag.dart';
 import 'package:store_app/Scenes/home.dart';
 import 'package:store_app/Scenes/product.dart';
 import 'package:store_app/Scenes/search.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ProductDetailsScreen(),
+      home: const BagScreen(),
     );
   }
 }
