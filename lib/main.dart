@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:store_app/DesignSystem/Samples/main_button_sample_screen.dart';
-import 'package:store_app/DesignSystem/Samples/nav_bar_sample_screen.dart';
-import 'package:store_app/DesignSystem/Samples/product_card_sample_screen.dart';
-import 'package:store_app/DesignSystem/Samples/search_bar_sample_screen.dart';
-import 'package:store_app/Scenes/bag.dart';
-import 'package:store_app/Scenes/home.dart';
-import 'package:store_app/Scenes/product.dart';
-import 'package:store_app/Scenes/search.dart';
+import 'package:store_app/Scenes/home/home.dart';
+
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const BagScreen(),
+      home: const HomeScreen(),
     );
   }
 }

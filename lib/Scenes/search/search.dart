@@ -5,6 +5,7 @@ import 'package:store_app/DesignSystem/Components/productCard/product_card.dart'
 import 'package:store_app/DesignSystem/Components/productCard/product_card_view_model.dart';
 import 'package:store_app/DesignSystem/Components/navBar/nav_bar.dart';
 import 'package:store_app/DesignSystem/Components/navBar/nav_bar_view_model.dart';
+import 'package:store_app/Scenes/search/search_page_router.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -14,7 +15,7 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  int actualIndex = 1;  // Define the search tab as the default index
+  int actualIndex = 1;  
   final SearchFieldViewModel _searchViewModel = SearchFieldViewModel();
 
   final List<ProductCardViewModel> searchResults = [
@@ -55,12 +56,6 @@ class _SearchScreenState extends State<SearchScreen> {
       appBar: AppBar(
         title: Row(
           children: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
             Expanded(
               child: SearchField.instantiate(viewModel: _searchViewModel),
             ),
@@ -68,8 +63,10 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.shopping_cart),
-            onPressed: () {},
+            icon: const Icon(Icons.shopping_cart_outlined),
+            onPressed: () {
+              SearchRouter.goToProductPage(context);
+            },
           ),
           IconButton(
             icon: const Icon(Icons.filter_list),
@@ -102,7 +99,14 @@ class _SearchScreenState extends State<SearchScreen> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: searchResults.length,
                 itemBuilder: (context, index) {
-                  return ProductCard.instantiate(viewModel: searchResults[index]);
+                  return GestureDetector(
+                    onTap: (){
+                      SearchRouter.goToBagPage(context);
+                    },
+                    
+  
+                  child: ProductCard.instantiate(viewModel: searchResults[index])
+                  );
                 },
               ),
             ],
@@ -136,6 +140,13 @@ class _SearchScreenState extends State<SearchScreen> {
           onIndexChanged: (index) {
             setState(() {
               actualIndex = index;
+              switch(index){
+                case 0:
+                SearchRouter.goToHomePage(context);
+
+                case 1:
+                SearchRouter.goToSearchPage(context);
+              }
             });
           },
         ),

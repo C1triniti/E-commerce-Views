@@ -4,6 +4,7 @@ import 'package:store_app/DesignSystem/Components/productCard/product_card.dart'
 import 'package:store_app/DesignSystem/Components/productCard/product_card_view_model.dart';
 import 'package:store_app/DesignSystem/Components/navBar/nav_bar.dart';
 import 'package:store_app/DesignSystem/Components/navBar/nav_bar_view_model.dart';
+import 'package:store_app/Scenes/home/home_page_router.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,14 +32,14 @@ class _HomeScreenState extends State<HomeScreen> {
       price: 6432.00,
     ),
     ProductCardViewModel(
-      imageUrl: 'lib/Images/t-shirt.png',
+      imageUrl: 'lib/Images/round-t-shirt.png',
       productName: 'Twill Suit',
       rating: 4.1,
       reviewCount: 272,
       price: 5233.00,
     ),
     ProductCardViewModel(
-      imageUrl: 'lib/Images/joggers.png',
+      imageUrl: 'lib/Images/poplin-suit.png',
       productName: 'Joggers',
       rating: 4.5,
       reviewCount: 150,
@@ -67,8 +68,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             IconButton(
-              icon: const Icon(Icons.shopping_cart),
-              onPressed: () {},
+              icon: const Icon(Icons.shopping_cart_outlined),
+              onPressed: () {
+                HomeRouter.goToBagPage(context);
+              },
             ),
           ],
         ),
@@ -88,20 +91,27 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             SizedBox(
-              height: 260,
+              height: 240,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: productViewModels.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    width: MediaQuery.of(context).size.width * 0.3,
-                    margin: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: ProductCard.instantiate(viewModel: productViewModels[index]),
+                  return GestureDetector(
+                    onTap: (){
+                      HomeRouter.goToProductPage(context);
+                    },
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: ProductCard.instantiate(viewModel: productViewModels[index]),
+                    ),
                   );
                 },
               ),
             ),
+
             const SizedBox(height: 20),
+
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 8.0),  // Adicionando padding horizontal
               child: Column(
@@ -172,6 +182,13 @@ class _HomeScreenState extends State<HomeScreen> {
           onIndexChanged: (index) {
             setState(() {
               actualIndex = index;
+              switch (index){
+                case 1:
+                HomeRouter.goToSearchPage(context);
+
+                case 0:
+                HomeRouter.goToHomePage(context);
+              }
             });
           },
         ),

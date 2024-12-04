@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:store_app/DesignSystem/Components/clickabletext/clickable_text.dart';
 import 'package:store_app/DesignSystem/Components/clickabletext/clickable_text_view_model.dart';
 import 'package:store_app/DesignSystem/Shared/colors.dart';
-import '../DesignSystem/Components/mainbutton/main_button.dart';
-import '../DesignSystem/Components/mainbutton/main_button_view_model.dart';
-import '../DesignSystem/Shared/styles.dart';
+import 'package:store_app/Scenes/bag/bag_page_router.dart';
+import '../../DesignSystem/Components/mainbutton/main_button.dart';
+import '../../DesignSystem/Components/mainbutton/main_button_view_model.dart';
+import '../../DesignSystem/Shared/styles.dart';
 
 class BagScreen extends StatefulWidget {
   const BagScreen({super.key});
@@ -18,12 +19,6 @@ class _BagScreenState extends State<BagScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
         title: const Text('Bag'),
         centerTitle: true,
       ),
@@ -35,7 +30,7 @@ class _BagScreenState extends State<BagScreen> {
               color: Colors.grey[300],
               padding: const EdgeInsets.all(16.0),
               child: const Text(
-                "You’ve Unlocked the FREE shipping",
+                "You’ve Unlocked the FREE shipping!",
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16.0),
               ),
@@ -330,7 +325,7 @@ class _BagScreenState extends State<BagScreen> {
                 viewModel: ButtonViewModel(
                   text: 'Proceed to Payment',
                   onPressed: () {
-                    // Handle payment action
+                    BagRouter.goToHomePage(context);
                   },
                   size: ButtonSize.normal,
                 ),

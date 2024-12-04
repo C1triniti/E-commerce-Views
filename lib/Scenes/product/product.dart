@@ -4,8 +4,9 @@ import 'package:store_app/DesignSystem/Components/clickabletext/clickable_text_v
 import 'package:store_app/DesignSystem/Components/productcard/product_card_view_model.dart';
 import 'package:store_app/DesignSystem/Shared/colors.dart';
 import 'package:store_app/DesignSystem/Shared/styles.dart';
-import '../DesignSystem/Components/mainbutton/main_button.dart';
-import '../DesignSystem/Components/mainbutton/main_button_view_model.dart';
+import 'package:store_app/Scenes/product/product_page_router.dart';
+import '../../DesignSystem/Components/mainbutton/main_button.dart';
+import '../../DesignSystem/Components/mainbutton/main_button_view_model.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   ProductDetailsScreen({super.key});
@@ -33,16 +34,12 @@ class ProductDetailsScreen extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
             const Text('Product Details'),
             IconButton(
-              icon: const Icon(Icons.shopping_cart),
-              onPressed: () {},
+              icon: const Icon(Icons.shopping_cart_outlined),
+              onPressed: () {
+                ProductRouter.goToBagPage(context);
+              },
             ),
           ],
         ),
@@ -144,7 +141,7 @@ class ProductDetailsScreen extends StatelessWidget {
                       viewModel: ButtonViewModel(
                         text: 'ADD TO BAG',
                         onPressed: () {
-                          print('Add to bag');
+                          ProductRouter.goToBagPage(context);
                         },
                         size: ButtonSize.normal,
                       ),
